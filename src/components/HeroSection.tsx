@@ -28,24 +28,24 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden">
+    <section className="relative pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden bg-[#faf9ef]">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-50 rounded-full opacity-70 blur-3xl"></div>
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-red-100 rounded-full opacity-70 blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ffe7f1] rounded-full opacity-70 blur-3xl"></div>
+        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#ffe7f1]/50 rounded-full opacity-70 blur-3xl"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-center">
           <div className="flex-1 max-w-2xl animate-fade-in">
             <div className="mb-6">
-              <span className="inline-block px-3 py-1 text-xs font-medium bg-pink-100 text-red-700 rounded-full">
+              <span className="inline-block px-3 py-1 text-xs font-medium bg-[#ffe7f1] text-[#671714] rounded-full">
                 Free beta access
               </span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight">
-              Turn school emails into <span className="text-red-500 text-glow">calendar events</span> in seconds
+              Turn school emails into <span className="text-[#067741] text-glow">calendar events</span> in seconds
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
@@ -53,21 +53,21 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
-              <form onSubmit={handleSubmit} className="flex w-full max-w-md">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row w-full max-w-md gap-3">
                 <div className="relative flex-1">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
                   <input
                     type="email"
                     required
                     placeholder="Enter your email"
-                    className="w-full pl-10 pr-4 py-3 bg-background border border-input rounded-l-full focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all"
+                    className="w-full pl-10 pr-4 py-3 bg-background border border-input rounded-full focus:outline-none focus:ring-2 focus:ring-[#067741] transition-all"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <Button 
                   type="submit" 
-                  className="rounded-r-full bg-red-500 hover:bg-red-600 text-white px-6"
+                  className="rounded-full bg-[#067741] hover:bg-[#056735] text-white px-6 py-3 h-auto"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Joining..." : "Get Started"}
@@ -77,15 +77,15 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex items-center gap-2">
-                <CheckCircle className="text-pink-600 w-5 h-5" />
+                <CheckCircle className="text-[#067741] w-5 h-5" />
                 <span className="text-sm">Completely free during beta</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="text-pink-600 w-5 h-5" />
+                <CheckCircle className="text-[#067741] w-5 h-5" />
                 <span className="text-sm">No credit card required</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="text-pink-600 w-5 h-5" />
+                <CheckCircle className="text-[#067741] w-5 h-5" />
                 <span className="text-sm">Instant access</span>
               </div>
             </div>
@@ -93,9 +93,9 @@ const HeroSection = () => {
           
           <div className="flex-1 relative animate-slide-up">
             <div className="relative max-w-md mx-auto">
-              <div className="absolute inset-0 -m-4 bg-pink-300/20 rounded-xl blur-xl animate-image-glow"></div>
+              <div className="absolute inset-0 -m-4 bg-[#ffe7f1]/40 rounded-xl blur-xl animate-image-glow"></div>
               <div className="glass-card rounded-xl overflow-hidden shadow-lg relative">
-                <div className="bg-red-500 text-white px-6 py-4 flex items-center gap-2">
+                <div className="bg-[#671714] text-white px-6 py-4 flex items-center gap-2">
                   <Mail className="w-5 h-5" />
                   <span className="font-medium">School Email</span>
                 </div>
