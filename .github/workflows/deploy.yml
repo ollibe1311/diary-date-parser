@@ -3,10 +3,10 @@ name: Deploy Vite App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Runs when you push to the main branch
+      - main  # Runs this action whenever you push to the main branch
 
 permissions:
-  contents: write  # Allows the workflow to push changes
+  contents: write  # Required to push to gh-pages branch
 
 jobs:
   build-and-deploy:
@@ -35,5 +35,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist  # ✅ This ensures only the built files are deployed
+          folder: dist  # ✅ Ensures only built files are deployed
           clean: true
