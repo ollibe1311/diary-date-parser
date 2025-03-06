@@ -28,9 +28,12 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: List built files (DEBUG)
+        run: ls -l dist/
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
+          folder: dist  # ✅ This ensures only the built files are deployed
           clean: true
