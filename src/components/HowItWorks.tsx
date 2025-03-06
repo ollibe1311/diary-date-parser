@@ -65,7 +65,7 @@ const HowItWorks = () => {
             <div className="relative">
               <div className="absolute inset-0 -m-4 bg-[#ffe7f1]/30 rounded-xl blur-xl"></div>
               <div className="glass-card rounded-xl overflow-hidden shadow-lg relative">
-                <div className="bg-[#671714] text-white px-6 py-4 flex items-center gap-2">
+                <div className="bg-[#671714] text-[#ffe7f1] px-6 py-4 flex items-center gap-2">
                   <Calendar className="w-5 h-5" />
                   <span className="font-medium">School Calendar</span>
                 </div>

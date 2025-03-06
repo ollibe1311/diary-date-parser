@@ -13,9 +13,11 @@ const CtaSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Log the email - this is where you'd send to your backend in production
+    console.log('Email submitted from CTA section:', email);
+    
     // Simulate API call
     setTimeout(() => {
-      console.log('Email submitted:', email);
       setEmail('');
       setIsSubmitting(false);
       

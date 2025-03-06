@@ -8,7 +8,7 @@ import {
 
 const features = [
   {
-    icon: <Calendar className="w-6 h-6 text-[#067741]" />,
+    icon: <Calendar className="w-6 h-6 text-[#671714]" />,
     title: "Automatic Calendar Creation",
     description: "Our AI extracts dates, times, and event details from school emails and creates calendar events automatically."
   },
@@ -18,7 +18,7 @@ const features = [
     description: "Share events with your partner, grandparents or caregivers to keep everyone in the loop."
   },
   {
-    icon: <Smartphone className="w-6 h-6 text-[#067741]" />,
+    icon: <Smartphone className="w-6 h-6 text-[#671714]" />,
     title: "Sync Across Devices",
     description: "Access your events on any device - seamlessly syncs with Google Calendar, Apple Calendar and more."
   },

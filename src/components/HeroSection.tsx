@@ -13,9 +13,11 @@ const HeroSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Log the email - this is where you'd send to your backend in production
+    console.log('Email submitted for signup:', email);
+    
     // Simulate API call
     setTimeout(() => {
-      console.log('Email submitted:', email);
       setEmail('');
       setIsSubmitting(false);
       
@@ -67,7 +69,7 @@ const HeroSection = () => {
                 </div>
                 <Button 
                   type="submit" 
-                  className="rounded-full bg-[#067741] hover:bg-[#056735] text-white px-6 py-3 h-auto"
+                  className="rounded-full bg-[#067741] hover:bg-[#056735] text-white px-6 py-3 h-auto w-full sm:w-auto"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Joining..." : "Get Started"}
@@ -95,7 +97,7 @@ const HeroSection = () => {
             <div className="relative max-w-md mx-auto">
               <div className="absolute inset-0 -m-4 bg-[#ffe7f1]/40 rounded-xl blur-xl animate-image-glow"></div>
               <div className="glass-card rounded-xl overflow-hidden shadow-lg relative">
-                <div className="bg-[#671714] text-white px-6 py-4 flex items-center gap-2">
+                <div className="bg-[#671714] text-[#ffe7f1] px-6 py-4 flex items-center gap-2">
                   <Mail className="w-5 h-5" />
                   <span className="font-medium">School Email</span>
                 </div>
