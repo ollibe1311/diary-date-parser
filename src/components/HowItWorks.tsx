@@ -1,5 +1,5 @@
 
-import { Mail, Forward, CalendarCheck } from 'lucide-react';
+import { Mail, Forward, CalendarCheck, Calendar } from 'lucide-react';
 
 const steps = [
   {
