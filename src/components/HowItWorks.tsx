@@ -1,24 +1,24 @@
 
-import { Mail, CalendarCheck, BellRing } from 'lucide-react';
+import { Mail, Forward, CalendarCheck } from 'lucide-react';
 
 const steps = [
   {
+    icon: <Forward className="w-8 h-8 text-white" />,
+    title: "Forward school emails",
+    description: "Simply forward any school email containing event dates to our service.",
+    color: "bg-red-500"
+  },
+  {
     icon: <Mail className="w-8 h-8 text-white" />,
-    title: "Connect your email",
-    description: "Link your email account where you receive school communications. We support Gmail, Outlook, and more.",
-    color: "bg-eucalyptus-600"
+    title: "We process in real-time",
+    description: "Our smart AI identifies dates, times, locations, and event details from school emails instantly.",
+    color: "bg-pink-600"
   },
   {
     icon: <CalendarCheck className="w-8 h-8 text-white" />,
-    title: "We process school emails",
-    description: "Our smart AI identifies dates, times, locations, and event details from school emails automatically.",
-    color: "bg-eucalyptus-700"
-  },
-  {
-    icon: <BellRing className="w-8 h-8 text-white" />,
-    title: "Events added to your calendar",
-    description: "Events are added to your chosen calendar app with appropriate reminders so you never miss anything important.",
-    color: "bg-eucalyptus-800"
+    title: "Receive calendar events",
+    description: "Events are added to your chosen calendar app immediately, so you're always organized.",
+    color: "bg-red-600"
   }
 ];
 
@@ -35,6 +35,76 @@ const HowItWorks = () => {
           </p>
         </div>
         
+        <div className="flex flex-col md:flex-row items-center justify-center mb-16 max-w-5xl mx-auto">
+          <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+            <div className="relative">
+              <div className="absolute inset-0 -m-4 bg-pink-300/20 rounded-xl blur-xl"></div>
+              <div className="bg-white rounded-xl shadow-lg p-6 relative">
+                <div className="border border-gray-200 rounded-lg p-4 mb-6 bg-gray-50">
+                  <div className="flex items-center mb-3">
+                    <Mail className="w-5 h-5 mr-2 text-gray-600" />
+                    <div className="text-sm font-medium">School Newsletter</div>
+                  </div>
+                  <div className="text-sm mb-3">Dear Parents,</div>
+                  <div className="text-sm mb-3">Please note the following important dates:</div>
+                  <div className="text-sm mb-2"><strong>Parent-Teacher Meeting:</strong> May 15th at 3:30 PM</div>
+                  <div className="text-sm mb-2"><strong>School Sports Day:</strong> May 22nd from 9:00 AM to 2:00 PM</div>
+                  <div className="text-sm"><strong>End of Term Assembly:</strong> May 28th at 10:30 AM</div>
+                </div>
+                
+                <div className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-10 h-10 rounded-full bg-pink-500 flex items-center justify-center shadow-md">
+                    <Forward className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="w-full md:w-1/2 md:pl-8">
+            <div className="relative">
+              <div className="absolute inset-0 -m-4 bg-red-300/20 rounded-xl blur-xl"></div>
+              <div className="glass-card rounded-xl overflow-hidden shadow-lg relative">
+                <div className="bg-red-500 text-white px-6 py-4 flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  <span className="font-medium">School Calendar</span>
+                </div>
+                <div className="p-6 bg-white">
+                  <div className="space-y-4">
+                    <div className="bg-pink-50 p-3 rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <span className="bg-pink-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium">15</span>
+                        <div>
+                          <h3 className="font-medium">Parent-Teacher Meeting</h3>
+                          <p className="text-sm text-muted-foreground">3:30 PM - 4:30 PM</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-pink-50 p-3 rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <span className="bg-pink-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium">22</span>
+                        <div>
+                          <h3 className="font-medium">School Sports Day</h3>
+                          <p className="text-sm text-muted-foreground">9:00 AM - 2:00 PM</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-pink-50 p-3 rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <span className="bg-pink-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium">28</span>
+                        <div>
+                          <h3 className="font-medium">End of Term Assembly</h3>
+                          <p className="text-sm text-muted-foreground">10:30 AM - 12:00 PM</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {steps.map((step, index) => (
             <div 
@@ -47,23 +117,8 @@ const HowItWorks = () => {
               
               <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
               <p className="text-muted-foreground">{step.description}</p>
-              
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-8 h-8">
-                  <div className="w-full h-0.5 bg-eucalyptus-200"></div>
-                </div>
-              )}
             </div>
           ))}
-        </div>
-        
-        <div className="mt-16 text-center">
-          <a 
-            href="#get-started" 
-            className="inline-block px-8 py-3 font-medium text-white bg-eucalyptus-600 rounded-full hover:bg-eucalyptus-700 transition-colors duration-300 shadow-sm"
-          >
-            Get Started Today
-          </a>
         </div>
       </div>
     </section>
