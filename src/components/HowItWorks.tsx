@@ -6,7 +6,7 @@ const steps = [
     icon: <Forward className="w-8 h-8 text-white" />,
     title: "Forward school emails",
     description: "Simply forward any school email containing event dates to our service.",
-    color: "bg-[#671714]"
+    color: "bg-[#067741]"
   },
   {
     icon: <Mail className="w-8 h-8 text-white" />,
@@ -18,7 +18,7 @@ const steps = [
     icon: <CalendarCheck className="w-8 h-8 text-white" />,
     title: "Receive calendar events",
     description: "Events are added to your chosen calendar app immediately, so you're always organized.",
-    color: "bg-[#671714]"
+    color: "bg-[#067741]"
   }
 ];
 
