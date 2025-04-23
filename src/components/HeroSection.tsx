@@ -9,25 +9,46 @@ const HeroSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Log the email - this is where you'd send to your backend in production
-    console.log('Email submitted for signup:', email);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setEmail('');
-      setIsSubmitting(false);
-      
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const res = await fetch("https://public.lindy.ai/api/v1/webhooks/lindy/2f870dac-f051-4945-ac61-fe3c892c8359", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer 8a8389015579e2325d2b138db86cca53b56d7bd43e5f9490ab52da58408804dc",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (res.ok) {
       toast({
         title: "You're in!",
         description: "Welcome to the My Kids Events beta. Check your email for access details.",
         variant: "default",
       });
-    }, 1000);
-  };
+      setEmail('');
+    } else {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
+  } catch (err) {
+    console.error("Lindy submission error", err);
+    toast({
+      title: "Network error",
+      description: "Please check your connection and try again.",
+      variant: "destructive",
+    });
+  }
+
+  setIsSubmitting(false);
+};
+
 
   return (
     <section className="relative pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden bg-[#faf9ef]">
