@@ -13,10 +13,12 @@ const HeroSection = () => {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/.netlify/functions/send-to-lindy", {
+      const res = await fetch("/api/send-to-lindy", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
       });
 
       const text = await res.text();
@@ -26,14 +28,14 @@ const HeroSection = () => {
         toast({
           title: "You're in!",
           description: "Welcome to the My Kids Events beta. Check your email for access details.",
-          variant: "default",
+          variant: "default"
         });
         setEmail('');
       } else {
         toast({
           title: "Something went wrong",
           description: "Please try again later.",
-          variant: "destructive",
+          variant: "destructive"
         });
       }
     } catch (err) {
@@ -41,7 +43,7 @@ const HeroSection = () => {
       toast({
         title: "Network error",
         description: "Please check your connection and try again.",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
 
@@ -50,7 +52,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden bg-[#faf9ef]">
-      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ffe7f1] rounded-full opacity-70 blur-3xl"></div>
         <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#ffe7f1]/50 rounded-full opacity-70 blur-3xl"></div>
@@ -146,8 +147,5 @@ const HeroSection = () => {
     </section>
   );
 };
-
-export default HeroSection;
-
 
 export default HeroSection;
