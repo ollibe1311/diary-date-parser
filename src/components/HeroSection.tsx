@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, CheckCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -9,46 +8,45 @@ const HeroSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  try {
-    const res = await fetch("https://public.lindy.ai/api/v1/webhooks/lindy/2f870dac-f051-4945-ac61-fe3c892c8359", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer 8a8389015579e2325d2b138db86cca53b56d7bd43e5f9490ab52da58408804dc",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-
-    if (res.ok) {
-      toast({
-        title: "You're in!",
-        description: "Welcome to the My Kids Events beta. Check your email for access details.",
-        variant: "default",
+    try {
+      const res = await fetch("/.netlify/functions/send-to-lindy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
       });
-      setEmail('');
-    } else {
+
+      const text = await res.text();
+      console.log("Lindy proxy response:", res.status, text);
+
+      if (res.ok) {
+        toast({
+          title: "You're in!",
+          description: "Welcome to the My Kids Events beta. Check your email for access details.",
+          variant: "default",
+        });
+        setEmail('');
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      console.error("Form submit error:", err);
       toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
+        title: "Network error",
+        description: "Please check your connection and try again.",
         variant: "destructive",
       });
     }
-  } catch (err) {
-    console.error("Lindy submission error", err);
-    toast({
-      title: "Network error",
-      description: "Please check your connection and try again.",
-      variant: "destructive",
-    });
-  }
 
-  setIsSubmitting(false);
-};
-
+    setIsSubmitting(false);
+  };
 
   return (
     <section className="relative pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden bg-[#faf9ef]">
@@ -57,7 +55,7 @@ const HeroSection = () => {
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ffe7f1] rounded-full opacity-70 blur-3xl"></div>
         <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#ffe7f1]/50 rounded-full opacity-70 blur-3xl"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-center">
           <div className="flex-1 max-w-2xl animate-fade-in">
@@ -66,15 +64,15 @@ const HeroSection = () => {
                 Free beta access
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight">
               Turn school emails into <span className="text-[#067741] text-glow">calendar events</span> in seconds
             </h1>
-            
+
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
               Never miss a school event again. My Kids Events automatically converts school emails into organized calendar invites.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row w-full max-w-md gap-3">
                 <div className="relative flex-1">
@@ -88,8 +86,8 @@ const HeroSection = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="rounded-full bg-[#067741] hover:bg-[#056735] text-white px-6 py-3 h-auto w-full sm:w-auto"
                   disabled={isSubmitting}
                 >
@@ -97,7 +95,7 @@ const HeroSection = () => {
                 </Button>
               </form>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex items-center gap-2">
                 <CheckCircle className="text-[#067741] w-5 h-5" />
@@ -113,7 +111,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="flex-1 relative animate-slide-up">
             <div className="relative max-w-md mx-auto">
               <div className="absolute inset-0 -m-4 bg-[#ffe7f1]/40 rounded-xl blur-xl animate-image-glow"></div>
@@ -135,7 +133,7 @@ const HeroSection = () => {
                       <li><strong>End of Term Assembly:</strong> May 28th at 10:30 AM</li>
                     </ul>
                   </div>
-                  
+
                   <div className="flex justify-center">
                     <div className="shine h-10 w-40 rounded-lg"></div>
                   </div>
@@ -148,5 +146,8 @@ const HeroSection = () => {
     </section>
   );
 };
+
+export default HeroSection;
+
 
 export default HeroSection;
