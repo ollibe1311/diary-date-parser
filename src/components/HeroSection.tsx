@@ -9,46 +9,46 @@ const HeroSection = () => {
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    try {
-      const res = await fetch("/api/send-to-lindy", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email })
-      });
+  try {
+    const res = await fetch("/api/send-to-lindy", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
 
-      const text = await res.text();
-      console.log("Lindy proxy response:", res.status, text);
+    const text = await res.text();
+    console.log("Lindy proxy response:", res.status, text); // 🔍 THIS LINE IS KEY
 
-      if (res.ok) {
-        toast({
-          title: "You're in!",
-          description: "Welcome to the My Kids Events beta. Check your email for access details.",
-          variant: "default"
-        });
-        setEmail('');
-      } else {
-        toast({
-          title: "Something went wrong",
-          description: "Please try again later.",
-          variant: "destructive"
-        });
-      }
-    } catch (err) {
-      console.error("Form submit error:", err);
+    if (res.ok) {
       toast({
-        title: "Network error",
-        description: "Please check your connection and try again.",
-        variant: "destructive"
+        title: "You're in!",
+        description: "Welcome to the My Kids Events beta. Check your email for access details.",
+        variant: "default",
+      });
+      setEmail('');
+    } else {
+      toast({
+        title: "Something went wrong",
+        description: text,
+        variant: "destructive",
       });
     }
+  } catch (err) {
+    console.error("Form submit error:", err);
+    toast({
+      title: "Network error",
+      description: "Please check your connection and try again.",
+      variant: "destructive",
+    });
+  }
 
-    setIsSubmitting(false);
-  };
+  setIsSubmitting(false);
+};
 
   return (
     <section className="relative pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden bg-[#faf9ef]">
