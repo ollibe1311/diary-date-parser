@@ -5,10 +5,10 @@ export default async function handler(req, res) {
 
   const { email } = req.body;
 
-  const response = await fetch("https://public.lindy.ai/api/v1/webhooks/lindy/2f870dac-f051-4945-ac61-fe3c892c8359", {
+  const response = await fetch("https://public.lindy.ai/api/v1/webhooks/lindy/72eb8442-f0f0-48c8-adb0-bd1648db91b8", {
     method: "POST",
     headers: {
-      "Authorization": "Bearer 8a8389015579e2325d2b138db86cca53b56d7bd43e5f9490ab52da58408804dc",
+      "Authorization": "Bearer 1afcb88b059dc1cff2040341331782ee64d3123c9ed85c6c4aeca8860db5378f",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email }),
